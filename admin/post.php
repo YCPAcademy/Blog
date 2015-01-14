@@ -56,7 +56,7 @@
         	
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Categorias</h1>
+                    <h1 class="page-header">Publicaciones</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -64,7 +64,7 @@
             <!-- /.row -->
             <div class="row"
                   <div class="col-lg-12">
-                	<?php $sql="SELECT * FROM category"?>
+                	<?php $sql="SELECT * FROM post"?>
                 	<div class="panel panel-default">
                 		
                 		<div class="panel-heading">
@@ -93,10 +93,10 @@
 			                                     <tbody>
 			                                     	<?php while ($row = $result -> fetch_array ()){ ?>
 			                                     	<tr class="odd gradeX">
-			                                            <td><?php echo $row["id_category"]?></td>
-			                                            <td><?php echo $row["name_category"]?></td>
-			                                            <td class="center"><a href="<?php echo $base_url."edit_category.php?id=".$row["id_category"]?>" class="btn btn-primary">Editar</a></td>
-			                                            <td class="center"><a href="<?php echo $base_url."delete_category.php?id=".$row["id_category"]?>" class="btn btn-primary">Borrar</a></td>
+			                                            <td><?php echo $row["id_post"]?></td>
+			                                            <td><?php echo $row["title_post"]?></td>
+			                                            <td class="center"><a href="<?php echo $base_url."edit_post.php?id=".$row["id_post"]?>" class="btn btn-primary">Editar</a></td>
+			                                            <td class="center"><a href="<?php echo $base_url."delete_post.php?id=".$row["id_post"]?>" class="btn btn-primary">Borrar</a></td>
 			                                        </tr>
 			                                     	<?php } ?>
 			                                     </tbody>

@@ -133,7 +133,7 @@
 													if ($mysqli -> query($sql) === TRUE){
 																
 															$mysqli->close();
-														    header("Location:category.php"); 
+														    echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
 															
 												}else{
 												    

@@ -45,80 +45,108 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        	
-		      <?php include "/include/header.php"; ?>
-		      
-		      <?php include "/include/aside_left.php"; ?>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Panel de administración</a>
+            </div>
 
+            <div class="navbar-default sidebar" role="navigation">
+            	
+                <div class="sidebar-nav navbar-collapse">
+                	
+                    <ul class="nav" id="side-menu">
+                    	
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                        </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Blog<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Categorías</a>
+                                </li>
+                                <li>
+                                    <a href="#">Publicaciones</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+ 
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
         </nav>
 
         <div id="page-wrapper">
         	
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Categorias</h1>
+                    <h1 class="page-header">Borrar categoría</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             
+             <?php 
+                        			
+				$sql = "SELECT * FROM category WHERE id_category=".$_GET['id'];
+				if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
+		
+			?>
             <!-- /.row -->
-            <div class="row"
-                  <div class="col-lg-12">
-                	<?php $sql="SELECT * FROM category"?>
+            <div class="row">
+               
+                <div class="col-lg-12">
+                	
                 	<div class="panel panel-default">
                 		
                 		<div class="panel-heading">
-                           <a href= "<?php echo $base_url. "new_category.php" ?>" class="btn btn-primary"> Crear</a>
+                           Borrar categoría <?php echo $row ['name_category']?>
                         </div>
-                        <?php if ($result =$mysqli -> query ($sql)){ ?>
+                        
+                       
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
                         	
-                        	 <?php if ($result -> num_rows >0){?>
-                        	 	
-			                        <!-- /.panel-heading -->
-			                        <div class="panel-body">
-			                        	
-			                        	<div class="dataTable_wrapper">
-			                        		
-			                        		<table class="table table-striped table-bordered table-hover" id="dataTables-example">
-			                        			
-			                        			<thead>
-			                                        <tr>
-			                                            <th>#</th>
-			                                            <th>Nombre</th>
-			                                            <th>Editar</th>
-			                                            <th>Borrar</th>
-			                                        </tr>
-			                                    </thead>
-			                                    
-			                                     <tbody>
-			                                     	<?php while ($row = $result -> fetch_array ()){ ?>
-			                                     	<tr class="odd gradeX">
-			                                            <td><?php echo $row["id_category"]?></td>
-			                                            <td><?php echo $row["name_category"]?></td>
-			                                            <td class="center"><a href="<?php echo $base_url."edit_category.php?id=".$row["id_category"]?>" class="btn btn-primary">Editar</a></td>
-			                                            <td class="center"><a href="<?php echo $base_url."delete_category.php?id=".$row["id_category"]?>" class="btn btn-primary">Borrar</a></td>
-			                                        </tr>
-			                                     	<?php } ?>
-			                                     </tbody>
-			                        			
-			                        		</table>
-			                        		
-			                        	</div>
-			                        	
-			                        </div>
-			                        
-			             	<?php }else{ ?>
-                        
-	                          No hay categorías creadas.
-	                        	
-	                        <?php } ?>
-                        
-                        <?php }else{ ?>
-                        
-                          Error en la consulta <?php echo $sql.$mysqli -> error(); ?>
+                        	Vas a borrar la categoría <?php echo $row ['name_category']?><br />
+                        	<a href="<?php echo $base_url."delete_category.php?id=".$_GET["id"]."&delete=1"?>" class="btn btn-primary">Sí</a>
+                        	<a href="<?php echo $base_url."delete_category.php?id=".$_GET["id"]."&delete=0"?>" class="btn btn-primary">No</a>
                         	
-                        <?php } ?>
-                		
+                        </div>
+                            <?php
+				                   
+				                   if(isset($_GET['delete'])){
+				                   	
+										if ($_GET['delete']==1){
+									
+											$sql="DELETE FROM category WHERE id_category =".$_GET["id"]."";
+											
+											if ($mysqli -> query($sql) === TRUE){
+									
+													$mysqli->close();
+													echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
+														
+											 }else{
+							    
+								                    echo "Error al añadir el registro".$mysqli->error();
+							                 }
+								
+										}else{
+											
+											echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
+											
+										}
+								   }
+										
+                		      ?>
                 	</div>
                 	
                 </div>
