@@ -136,7 +136,7 @@
 														
 											 }else{
 							    
-								                    echo "Error al añadir el registro".$mysqli->error();
+								                    echo "Error al borrar el registro".$mysqli->error();
 							                 }
 								
 										}else{

@@ -1,4 +1,5 @@
 <?php include "/include/config.php"; ?>
+<?php include "/funciones/valida_datos.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -134,20 +135,29 @@
                                     	<?php
                                     	
                                     		if(isset($_POST['submit'])){
+                                    			
+							                    if (valida_datos ($_POST['name_category'])==TRUE){
+                                    			
 							
-												$sql = "UPDATE category SET  name_category = '".$_POST ["name_category"]."' WHERE 
-												id_category =".$_GET['id'];
-							
-													if ($mysqli -> query($sql) === TRUE){
+														$sql = "UPDATE category SET  name_category = '".$_POST ["name_category"]."' WHERE 
+														id_category =".$_GET['id'];
 									
-														$mysqli->close();
-									    				echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
-										
-													}else{
-							    
-														echo "Error al editar categoría".$mysqli->error();
-													}
-											}
+															 if ($mysqli -> query($sql) === TRUE){
+											
+																$mysqli->close();
+											    				echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
+												
+															 }else{
+									    
+																echo "Error al editar categoría".$mysqli->error();
+															 }
+											     }else{
+											     	
+													 echo "El nombre de la categoría está vacía o no tiene el formato correcto.";
+											
+											     }
+												 
+											 }
 										
 			                              ?>
                         		</div>

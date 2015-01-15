@@ -89,14 +89,14 @@
         	
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Borrar categoría</h1>
+                    <h1 class="page-header">Borrar publicación</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             
              <?php 
                         			
-				$sql = "SELECT * FROM category WHERE id_category=".$_GET['id'];
+				$sql = "SELECT * FROM post WHERE id_post=".$_GET['id_post'];
 				if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
 		
 			?>
@@ -108,7 +108,7 @@
                 	<div class="panel panel-default">
                 		
                 		<div class="panel-heading">
-                           Borrar categoría <?php echo $row ['name_category']?>
+                           Borrar publicación <?php echo $row ['title_post']?>
                         </div>
                         
                        
@@ -116,9 +116,9 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         	
-                        	Vas a borrar la categoría <?php echo $row ['name_category']?><br />
-                        	<a href="<?php echo $base_url."delete_category.php?id=".$_GET["id"]."&delete=1"?>" class="btn btn-primary">Sí</a>
-                        	<a href="<?php echo $base_url."delete_category.php?id=".$_GET["id"]."&delete=0"?>" class="btn btn-primary">No</a>
+                        	Vas a borrar la publicación <?php echo $row ['title_post']?><br />
+                        	<a href="<?php echo $base_url."delete_post.php?id_post=".$_GET["id_post"]."&delete=1"?>" class="btn btn-primary">Sí</a>
+                        	<a href="<?php echo $base_url."delete_post.php?id_post=".$_GET["id_post"]."&delete=0"?>" class="btn btn-primary">No</a>
                         	
                         </div>
                             <?php
@@ -127,21 +127,21 @@
 				                   	
 										if ($_GET['delete']==1){
 									
-											$sql="DELETE FROM category WHERE id_category =".$_GET["id"]."";
+											$sql="DELETE FROM post WHERE id_post =".$_GET["id_post"]."";
 											
 											if ($mysqli -> query($sql) === TRUE){
 									
 													$mysqli->close();
-													echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
+													echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
 														
 											 }else{
 							    
-								                    echo "Error al añadir el registro".$mysqli->error();
+								                    echo "Error al borrar publicación".$mysqli->error();
 							                 }
 								
 										}else{
 											
-											echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
+											echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
 											
 										}
 								   }

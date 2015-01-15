@@ -95,8 +95,8 @@
 			                                     	<tr class="odd gradeX">
 			                                            <td><?php echo $row["id_post"]?></td>
 			                                            <td><?php echo $row["title_post"]?></td>
-			                                            <td class="center"><a href="<?php echo $base_url."edit_post.php?id=".$row["id_post"]?>" class="btn btn-primary">Editar</a></td>
-			                                            <td class="center"><a href="<?php echo $base_url."delete_post.php?id=".$row["id_post"]?>" class="btn btn-primary">Borrar</a></td>
+			                                            <td class="center"><a href="<?php echo $base_url."edit_post.php?id_post=".$row["id_post"]?>" class="btn btn-primary">Editar</a></td>
+			                                            <td class="center"><a href="<?php echo $base_url."delete_post.php?id_post=".$row["id_post"]?>" class="btn btn-primary">Borrar</a></td>
 			                                        </tr>
 			                                     	<?php } ?>
 			                                     </tbody>
