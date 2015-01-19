@@ -90,7 +90,7 @@
         	
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Editar categoría</h1>
+                    <h1 class="page-header">Añadir publicación</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -103,7 +103,7 @@
                 	<div class="panel panel-default">
                 		
                 		<div class="panel-heading">
-                           Editar categoría
+                           Añadir publicación
                         </div>
                         
                         <!-- /.panel-heading -->
@@ -113,51 +113,85 @@
                         		
                         		<div class="col-lg-12">
                         			
-                        			<?php 
-                        			
-                        				$sql = "SELECT * FROM category WHERE id_category=".$_GET['id'];
-										if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
-								
-                        			?>
-                        			
-                                    <form method="post" >
+                                    <form method="post" enctype="multipart/form-data">
                                     	
-                                    	<div class="form-group">
-                                            <label>Editar categoría</label>
-                                            <input value="<?php echo $row ["name_category"] ?>" name="name_category" type="text" class="form-control"/>
-                                        </div>
+                                    	<?php $sql= "SELECT * FROM category";?>
+                                    	
+                                    		<?php if ($result =$mysqli -> query ($sql)){ ?>
+                        	
+                        	 					<?php if ($result -> num_rows >0){?>
+                                    	
+			                                    	 <div class="form-group">
+			                                            <label>Selecciona la categoría de la publicación</label>
+			                                            <select name="id_category" class="form-control">
+			                                            	
+			                                                <option value=""></option>
+			                                                
+			                                                <?php while ($row = $result -> fetch_array ()){ ?>
+			                                                	<option value="<?php echo $row["id_category"]?>"><?php echo $row["name_category"]?></option>
+			                                                <?php } ?>
+			                                                
+			                                            </select>
+			                                        </div>
+			                                       
+			                                       <?php }else{ echo "no hay categorías creadas";}?>
+			                                       	
+			                                   <?php }else{echo "Error al añadir una categoría".$mysqli->error();}?>
+			                                   
+			                                  
+			                                       	
+			                                    	<div class="form-group">
+			                                            <label>Título publicación</label>
+			                                            <input value="<?php if(isset($_POST['title_post'])) echo $_POST['title_post'] ?>" name="title_post" type="text" class="form-control"/>
+			                                        </div>
+			                                        
+				                                    <div class="form-group">
+	                                                    <label>Cuerpo publicación</label>
+	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php if(isset($_POST['body_post'])) echo $_POST['body_post'] ?></textarea>
+	                                                </div>
+	                                                
+			                                         <div class="form-group">
+	                                                    <label>Tags</label>
+	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php if(isset($_POST['tag_post'])) echo $_POST['tag_post'] ?></textarea>
+	                                                </div>
                                         
+                                        			<div class="form-group">
+	                                                    <label>Imagen publicación</label>
+	                                                    <input  name="image_post" type="file" class="form-control"/>
+	                                                </div>
                                       
-                                        <button name="submit" type="submit" class="btn btn-default">Editar</button>
-                                    	
-                                    </form>
+	                                                <button name="submit" type="submit" class="btn btn-default">Crear</button>
+	                                    	
+	                                    </form>
                                     	
                                     	<?php
-                                    	
-                                    		if(isset($_POST['submit'])){
-                                    			
-							                    if (valida_datos($_POST['name_category'])==TRUE){
-                                    			
-							
-														$sql = "UPDATE category SET  name_category = '".$_POST ["name_category"]."' WHERE 
-														id_category =".$_GET['id'];
-									
-															 if ($mysqli -> query($sql) === TRUE){
-											
-																$mysqli->close();
-											    				echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'category.php">';
+						
+											if(isset($_POST['submit'])){
 												
-															 }else{
-									    
-																echo "Error al editar categoría".$mysqli->error();
-															 }
-											     }else{
-											     	
-													 echo "El nombre de la categoría está vacía o no tiene el formato correcto.";
-											
-											     }
-												 
-											 }
+												$sql = "INSERT INTO post (id_category, title_post, body_post, tag_post, image_post)
+							                    VALUES (".$_POST["id_category"].",'".$_POST["title_post"]."','".$_POST["body_post"]."',
+							                    '".$_POST["tag_post"]."','".$_FILES["image_post"]["name"]."')";
+												
+															if ($mysqli -> query($sql) === TRUE){
+																		
+																	$mysqli->close();
+													                $target_path="../uploads/";
+																	$target_path=$target_path.basename($_FILES["image_post"]["name"]);
+																	
+																	if(move_uploaded_file($_FILES["image_post"]["tmp_name"], $target_path)){//tmp_name nombre temporal, ruta y nombre del archivo para que haga la subida del archivo
+																    	echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+																	}else{
+																		echo "Error al subir la imagen. Inténtelo más tarde.";
+																	}
+																	
+														    }else{
+														    
+															        echo "Error al añadir una publicación".$mysqli->error();
+														    }
+								
+												
+											 
+											}
 										
 			                              ?>
                         		</div>

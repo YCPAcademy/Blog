@@ -68,7 +68,7 @@
                 	<div class="panel panel-default">
                 		
                 		<div class="panel-heading">
-                           <a href= "<?php echo $base_url. "new_category.php" ?>" class="btn btn-primary"> Crear</a>
+                           <a href= "<?php echo $base_url. "new_post.php" ?>" class="btn btn-primary"> Crear</a>
                         </div>
                         <?php if ($result =$mysqli -> query ($sql)){ ?>
                         	
