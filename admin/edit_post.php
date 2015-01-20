@@ -1,4 +1,5 @@
 <?php include "/include/config.php"; ?>
+<?php include "/funciones/valida_datos.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,17 +90,11 @@
         	
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Borrar publicación</h1>
+                    <h1 class="page-header">Editar publicación</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             
-             <?php 
-                        			
-				$sql = "SELECT * FROM post WHERE id_post=".$_GET['id_post'];
-				if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
-		
-			?>
             <!-- /.row -->
             <div class="row">
                
@@ -108,48 +103,87 @@
                 	<div class="panel panel-default">
                 		
                 		<div class="panel-heading">
-                           Borrar publicación <?php echo $row ['title_post']?>
+                           Editar publicación
                         </div>
-                        
-                       
                         
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         	
-                        	Vas a borrar la publicación <?php echo $row ['title_post']?><br />
-                        	<a href="<?php echo $base_url."delete_post.php?id_post=".$_GET["id_post"]."&delete=1"?>" class="btn btn-primary">Sí</a>
-                        	<a href="<?php echo $base_url."delete_post.php?id_post=".$_GET["id_post"]."&delete=0"?>" class="btn btn-primary">No</a>
+                        	<div class="row">
+                        		
+                        		<div class="col-lg-12">
+                        			
+                                     <form method="post" enctype="multipart/form-data">
+                                    	
+                                    	
+			                              
+			                                   
+			                                       	<?php 
+                        			
+				                        				$sql = "SELECT * FROM post, category WHERE id_post=".$_GET['id_post'];
+														if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
+								
+                        							?>
+                        							
+                        							 
+                        							<div class="form-group">
+			                                            <label>Categoría</label>
+			                                            <input value="<?php echo $row ["id_category"] ?>" name="id_category" type="text" class="form-control"/>
+			                                        </div>
+                        							
+			                                    	<div class="form-group">
+			                                            <label>Título publicación</label>
+			                                            <input value="<?php echo $row ["title_post"] ?>" name="title_post" type="text" class="form-control"/>
+			                                        </div>
+			                                        
+				                                    <div class="form-group">
+	                                                    <label>Cuerpo publicación</label>
+	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php echo $row ["body_post"] ?></textarea>
+	                                                </div>
+	                                                
+			                                         <div class="form-group">
+	                                                    <label>Tags</label>
+	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php echo $row ["tag_post"] ?></textarea>
+	                                                </div>
+                                        
+                                        			<div class="form-group">
+	                                                    <label>Imagen publicación</label>
+	                                                    <input  name="image_post" type="file" class="form-control"/>
+	                                                </div>
+                                      
+	                                                <button name="submit" type="submit" class="btn btn-default">Editar</button>
+	                                    	
+	                                    </form>
+                                    	
+                                    	<?php
+                                    	
+                                    		if(isset($_POST['submit'])){
+                                    			
+							               
+														$sql = "UPDATE post SET  title_post = '".$_POST ["title_post"]."', body_post = '".$_POST ["body_post"]."',
+														tag_post = '".$_POST ["tag_post"]."', image_post ='".$_FILES["image_post"]["name"]."' WHERE id_post =".$_GET['id_post'];
+									
+															 if ($mysqli -> query($sql) === TRUE){
+											
+																$mysqli->close();
+											    				echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+												
+															 }else{
+									    
+																echo "Error al editar publicación".$mysqli->error();
+															 }
+											    
+											     }
+												 
+											 
+										
+			                              ?>
+                        		</div>
+                        		
+                        	</div>
                         	
                         </div>
-                            <?php
-				                   
-				                   if(isset($_GET['delete'])){
-				                   	
-										if ($_GET['delete']==1){
-									
-											$sql="DELETE FROM post WHERE id_post =".$_GET["id_post"]."";
-											
-											if ($mysqli -> query($sql) === TRUE){
-									
-													$mysqli->close();
-												    $target_path="../uploads/";
-													$target_path=$target_path.basename($_FILES["image_post"]["name"]); //$row['image_post']
-												    unlink($target_path); //ruta dónde se encuentre el archivo.
-													echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
-														
-											 }else{
-							    
-								                    echo "Error al borrar publicación".$mysqli->error();
-							                 }
-								
-										}else{
-											
-											echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
-											
-										}
-								   }
-										
-                		      ?>
+                		
                 	</div>
                 	
                 </div>
