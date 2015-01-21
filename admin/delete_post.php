@@ -1,4 +1,5 @@
 <?php include "/include/config.php"; ?>
+<?php include (dirname(__FILE__)."/function/uploads.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +97,7 @@
             
              <?php 
                         			
-				$sql = "SELECT * FROM post WHERE id_post=".$_GET['id_post'];
+				$sql = "SELECT title_post, image_post FROM post WHERE id_post=".$_GET['id_post'];
 				if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
 		
 			?>
@@ -132,9 +133,7 @@
 											if ($mysqli -> query($sql) === TRUE){
 									
 													$mysqli->close();
-												    $target_path="../uploads/";
-													$target_path=$target_path.basename($_FILES["image_post"]["name"]); //$row['image_post']
-												    unlink($target_path); //ruta dónde se encuentre el archivo.
+												    delete_file('../uploads/',$row ['image_post']);
 													echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
 														
 											 }else{

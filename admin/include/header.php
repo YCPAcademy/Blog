@@ -10,5 +10,6 @@
     </button>
     
     <a class="navbar-brand" href="index.html">Panel de administración</a>
+    <a href="<?php echo $base_url?>logout.php" class="navbar-brand">Cerrar</a>
     
 </div>
