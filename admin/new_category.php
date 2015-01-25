@@ -1,5 +1,8 @@
 <?php include "/include/config.php"; ?>
 <?php include "/funciones/valida_datos.php";?>
+<?php //if (!isset($_SESSION['user_name'])){?>
+	<?php //header("Location:index.php");?>
+<?php// } else {?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,44 +49,11 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Panel de administración</a>
-            </div>
-
-            <div class="navbar-default sidebar" role="navigation">
-            	
-                <div class="sidebar-nav navbar-collapse">
-                	
-                    <ul class="nav" id="side-menu">
-                    	
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
-                        </li>
-                        
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Blog<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Categorías</a>
-                                </li>
-                                <li>
-                                    <a href="#">Publicaciones</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
- 
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+            
+             <?php include "/include/header.php"; ?>
+		      
+		     <?php include "/include/aside_left.php"; ?>
+		      
         </nav>
 
         <div id="page-wrapper">
@@ -630,3 +600,4 @@
 </body>
 
 </html>
+<?php //}?>

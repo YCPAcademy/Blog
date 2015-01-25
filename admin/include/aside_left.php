@@ -5,7 +5,7 @@
         <ul class="nav" id="side-menu">
         	
             <li>
-                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                <a href="<?php echo $base_url. "index.php" ?>"><i class="fa fa-dashboard fa-fw"></i> Home</a>
             </li>
             
             <li>
@@ -15,7 +15,7 @@
                         <a href="<?php echo $base_url. "category.php" ?>">Categorías</a>
                     </li>
                     <li>
-                        <a href="">Publicaciones</a>
+                        <a href="<?php echo $base_url. "post.php" ?>">Publicaciones</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

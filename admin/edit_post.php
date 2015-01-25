@@ -1,5 +1,8 @@
 <?php include "/include/config.php"; ?>
 <?php include "/funciones/valida_datos.php";?>
+<?php //if (!isset($_SESSION['user_name'])){?>
+	<?php // header("Location:index.php");?>
+<?php //} else {?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,44 +49,11 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Panel de administración</a>
-            </div>
-
-            <div class="navbar-default sidebar" role="navigation">
-            	
-                <div class="sidebar-nav navbar-collapse">
-                	
-                    <ul class="nav" id="side-menu">
-                    	
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
-                        </li>
-                        
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Blog<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Categorías</a>
-                                </li>
-                                <li>
-                                    <a href="#">Publicaciones</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
- 
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+            
+             <?php include "/include/header.php"; ?>
+		      
+		     <?php include "/include/aside_left.php"; ?>
+		      
         </nav>
 
         <div id="page-wrapper">
@@ -115,21 +85,39 @@
                         			
                                      <form method="post" enctype="multipart/form-data">
                                     	
+			                                <?php $sql= "SELECT * FROM category";?>
                                     	
-			                              
+                                    			<?php if ($result =$mysqli -> query ($sql)){ ?>
+                        	
+                        	 						<?php if ($result -> num_rows >0){?>
+                                    	
+			                                    	 	<div class="form-group">
+			                                            	<label>Selecciona la categoría de la publicación</label>
+			                                           		<select name="id_category" class="form-control">
+			                                            	
+			                                                	<option value=""></option>
+			                                                		
+					                                                <?php while ($row = $result -> fetch_array ()){ ?>
+					                                                	<option value="<?php echo $row["id_category"]?>"><?php echo $row["name_category"]?></option>
+					                                                	<?php if ($row['id_category']==$row2['id_category']) {?>
+					                                                	<option value="<?php echo $row["id_category"]?>" selected><?php echo $row["name_category"]?></option>
+					                                                	<?php } ?>
+					                                                <?php } ?>
+			                                                
+			                                                </select>
+			                                            </div>
+			                                       
+			                                       <?php }else{ echo "no hay categorías creadas";}?>
+			                                       	
+			                                   <?php }else{echo "Error al añadir una categoría".$mysqli->error();}?>
 			                                   
-			                                       	<?php 
+			                                   <?php 
                         			
-				                        				$sql = "SELECT * FROM post, category WHERE id_post=".$_GET['id_post'];
-														if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
+			                        				$sql = "SELECT * FROM post  WHERE id_post=".$_GET['id_post'];
+													if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
 								
-                        							?>
+                        						?>
                         							
-                        							 
-                        							<div class="form-group">
-			                                            <label>Categoría</label>
-			                                            <input value="<?php echo $row ["id_category"] ?>" name="id_category" type="text" class="form-control"/>
-			                                        </div>
                         							
 			                                    	<div class="form-group">
 			                                            <label>Título publicación</label>
@@ -148,9 +136,9 @@
                                         
                                         			<div class="form-group">
 	                                                    <label>Imagen publicación</label>
-	                                                    <input  name="image_post" type="file" class="form-control"/>
-	                                                </div>
-                                      
+	                                                    <input value="<?php echo $row ["image_post"] ?>" name="image_post" type="file" class="form-control"/>
+	                                               </div>
+	                                              
 	                                                <button name="submit" type="submit" class="btn btn-default">Editar</button>
 	                                    	
 	                                    </form>
@@ -162,7 +150,9 @@
 							               
 														$sql = "UPDATE post SET  title_post = '".$_POST ["title_post"]."', body_post = '".$_POST ["body_post"]."',
 														tag_post = '".$_POST ["tag_post"]."', image_post ='".$_FILES["image_post"]["name"]."' WHERE id_post =".$_GET['id_post'];
-									
+														 
+														 //copy($_FILES['imagen']['tmp_name'], "nuevaImagen.jpg");
+														 
 															 if ($mysqli -> query($sql) === TRUE){
 											
 																$mysqli->close();
@@ -657,3 +647,4 @@
 </body>
 
 </html>
+<?php //}?>

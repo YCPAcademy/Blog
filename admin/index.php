@@ -1,7 +1,6 @@
-<?php include "/include/config.php"; ?>
-<?php 
-	if(isset($_POST['submit'])){
-		echo 'Hola mundo';
+<?php include "/include/config.php"; ?>	
+<?php include "/funciones/valida_contrasena.php";?>
+<?php  if(isset($_POST['submit'])){
 		$sql="SELECT * FROM users WHERE email_user ='".$_POST['email_user']."' AND pass_user = '".sha1($_POST['pass_user'])."'";
 			if ($result =$mysqli -> query ($sql)){
                     if ($result -> num_rows >0){
@@ -10,17 +9,20 @@
                          $_SESSION['user_name']=$row['email_user'];
                          $mysqli->close();
                          header("Location:".$base_url."home.php");
+						 
                    }else{
                    	
-					echo 'User no found';
+					echo "Usuario no encontrado.";
 					
                    }
+				   
              }else{
              	
 				echo $mysqli->error;
 				
              }
          }
+
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +79,21 @@
                                 </div>
                                 
                                 <button type="submit" name="submit" class="btn btn-lg btn-success btn-block">Entrar</button>
+                                <?php /*
+                                
+                                if(isset($_POST['submit'])){
+                                	
+                                	if (valida_contrasena ($_POST['email_user'],$_POST['pass_user'])==TRUE){
+                                		
+                                		echo "El usuario o la contraseña son correctas.";
+										
+                                	}else{
+                                		
+										echo "El usuario o la contraseña son erróneas.";
+                                	}	
+								}
+								
+                               */ ?>  
 								
                             </fieldset>
                         </form>
