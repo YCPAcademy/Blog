@@ -1,7 +1,8 @@
+<?php session_start();?>
 <?php include "/include/config.php"; ?>
-<?php //if (!isset($_SESSION['user_name'])){?>
-	<?php //header("Location:index.php");?>
-<?php // } else {?>
+<?php if (!isset($_SESSION['user_name'])){?>
+	<?php header("Location:index.php");?>
+<?php  } else {?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -595,4 +596,4 @@
 </body>
 
 </html>
-<?php // }?>
+<?php } ?>

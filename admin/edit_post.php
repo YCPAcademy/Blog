@@ -84,6 +84,13 @@
                         		<div class="col-lg-12">
                         			
                                      <form method="post" enctype="multipart/form-data">
+                                     	
+                                     	 <?php 
+                        			
+			                        				$sql = "SELECT * FROM post  WHERE id_post=".$_GET['id_post'];
+													if ($result =$mysqli -> query ($sql)) $post = $result -> fetch_assoc();
+								
+                        					?>
                                     	
 			                                <?php $sql= "SELECT * FROM category";?>
                                     	
@@ -97,10 +104,10 @@
 			                                            	
 			                                                	<option value=""></option>
 			                                                		
-					                                                <?php while ($row = $result -> fetch_array ()){ ?>
-					                                                	<option value="<?php echo $row["id_category"]?>"><?php echo $row["name_category"]?></option>
-					                                                	<?php if ($row['id_category']==$row2['id_category']) {?>
-					                                                	<option value="<?php echo $row["id_category"]?>" selected><?php echo $row["name_category"]?></option>
+					                                                <?php while ($category = $result -> fetch_array ()){ ?>
+					                                                	<option value="<?php echo $category["id_category"]?>"><?php echo $category["name_category"]?></option>
+					                                                	<?php if ($category['id_category']==$post['id_category']) {?>
+					                                                	<option value="<?php echo $category["id_category"]?>" selected><?php echo $category["name_category"]?></option>
 					                                                	<?php } ?>
 					                                                <?php } ?>
 			                                                
@@ -111,33 +118,25 @@
 			                                       	
 			                                   <?php }else{echo "Error al añadir una categoría".$mysqli->error();}?>
 			                                   
-			                                   <?php 
-                        			
-			                        				$sql = "SELECT * FROM post  WHERE id_post=".$_GET['id_post'];
-													if ($result =$mysqli -> query ($sql)) $row = $result -> fetch_assoc();
-								
-                        						?>
-                        							
-                        							
-			                                    	<div class="form-group">
+			         								<div class="form-group">
 			                                            <label>Título publicación</label>
-			                                            <input value="<?php echo $row ["title_post"] ?>" name="title_post" type="text" class="form-control"/>
+			                                            <input value="<?php echo $post ["title_post"] ?>" name="title_post" type="text" class="form-control"/>
 			                                        </div>
 			                                        
 				                                    <div class="form-group">
 	                                                    <label>Cuerpo publicación</label>
-	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php echo $row ["body_post"] ?></textarea>
+	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php echo $post ["body_post"] ?></textarea>
 	                                                </div>
 	                                                
 			                                         <div class="form-group">
 	                                                    <label>Tags</label>
-	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php echo $row ["tag_post"] ?></textarea>
+	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php echo $post ["tag_post"] ?></textarea>
 	                                                </div>
                                         
                                         			<div class="form-group">
 	                                                    <label>Imagen publicación</label>
-	                                                    <?php //up_file ($row ["image_post"]); ?>
-	                                                    <input value="<?php echo $row ["image_post"] ?>" name="image_post" type="file" class="form-control"/>
+	                                                    <?php //up_file ($category ["image_post"]); ?>
+	                                                    <input value="<?php echo $category ["image_post"] ?>" name="image_post" type="file" class="form-control"/>
 	                                               </div>
 	                                              
 	                                                <button name="submit" type="submit" class="btn btn-default">Editar</button>
