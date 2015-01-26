@@ -136,6 +136,7 @@
                                         
                                         			<div class="form-group">
 	                                                    <label>Imagen publicación</label>
+	                                                    <?php //up_file ($row ["image_post"]); ?>
 	                                                    <input value="<?php echo $row ["image_post"] ?>" name="image_post" type="file" class="form-control"/>
 	                                               </div>
 	                                              
