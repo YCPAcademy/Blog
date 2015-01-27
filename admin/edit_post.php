@@ -1,8 +1,9 @@
+<?php session_start();?>
 <?php include "/include/config.php"; ?>
 <?php include "/funciones/valida_datos.php";?>
-<?php //if (!isset($_SESSION['user_name'])){?>
-	<?php // header("Location:index.php");?>
-<?php //} else {?>
+<?php if (!isset($_SESSION['user_name'])){?>
+	<?php header("Location:index.php");?>
+<?php } else {?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -134,9 +135,9 @@
 	                                                </div>
                                         
                                         			<div class="form-group">
-	                                                    <label>Imagen publicación</label>
-	                                                    <?php //up_file ($category ["image_post"]); ?>
-	                                                    <input value="<?php echo $category ["image_post"] ?>" name="image_post" type="file" class="form-control"/>
+                                        				<label>Imagen publicación (620 x 295 pixeles)</label>
+                                        				<?php $target_path="uploads"; echo '<img class="img-responsive img-blog" src="'.$target_path."/".$post['image_post'].'" width="20%" alt="" >';?>
+                                        				<input value="<?php echo $post ["image_post"] ?>" name="image_post" type="file" class="form-control"/>  
 	                                               </div>
 	                                              
 	                                                <button name="submit" type="submit" class="btn btn-default">Editar</button>
@@ -151,7 +152,7 @@
 														$sql = "UPDATE post SET  title_post = '".$_POST ["title_post"]."', body_post = '".$_POST ["body_post"]."',
 														tag_post = '".$_POST ["tag_post"]."', image_post ='".$_FILES["image_post"]["name"]."' WHERE id_post =".$_GET['id_post'];
 														 
-														 //copy($_FILES['imagen']['tmp_name'], "nuevaImagen.jpg");
+														 
 														 
 															 if ($mysqli -> query($sql) === TRUE){
 											
@@ -647,4 +648,4 @@
 </body>
 
 </html>
-<?php //}?>
+<?php }?>

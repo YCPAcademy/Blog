@@ -1,6 +1,6 @@
 <?php include "/include/config.php"; ?>	
 <?php include "/funciones/valida_contrasena.php";?>
-<?php /* if(isset($_POST['submit'])){
+<?php  if(isset($_POST['submit'])){
 		$sql="SELECT * FROM users WHERE email_user ='".$_POST['email_user']."' AND pass_user = '".sha1($_POST['pass_user'])."'";
 			if ($result =$mysqli -> query ($sql)){
                     if ($result -> num_rows >0){
@@ -21,7 +21,7 @@
 				echo $mysqli->error;
 				
              }
-         }*/
+         }
 
 ?>
 
@@ -79,7 +79,7 @@
                                 </div>
                                 
                                 <button type="submit" name="submit" class="btn btn-lg btn-success btn-block">Entrar</button>
-                                <?php 
+                                <?php /*
                                 
                                 if(isset($_POST['submit'])){
                                 	
@@ -92,7 +92,7 @@
 										echo "El usuario o la contraseña son erróneas.";
                                 	}	
 								}
-								
+								*/
                                 ?>  
 								
                             </fieldset>

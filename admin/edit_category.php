@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php include "/include/config.php"; ?>
 <?php include "/funciones/valida_datos.php";?>
 <?php if (!isset($_SESSION['user_name'])){?>
