@@ -136,7 +136,7 @@
                                         
                                         			<div class="form-group">
                                         				<label>Imagen publicación (620 x 295 pixeles)</label>
-                                        				<?php $target_path="uploads"; echo '<img class="img-responsive img-blog" src="'.$target_path."/".$post['image_post'].'" width="20%" alt="" >';?>
+                                        				<?php $target_path="../uploads"; echo '<img class="img-responsive img-blog" src="'.$target_path."/".$post['image_post'].'" width="20%" alt="" >';?>
                                         				<input value="<?php echo $post ["image_post"] ?>" name="image_post" type="file" class="form-control"/>  
 	                                               </div>
 	                                              

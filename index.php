@@ -1,5 +1,7 @@
 <?php include "/include/config.php"; ?>
 <?php include "/function/blogfunction.php"; ?>
+<?php define ('LIMITER',1); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +44,13 @@
         <div class="blog">
             <div class="row">
                  <div class="col-md-8">
-                 	
-                 	<?php $sql = "SELECT * FROM post LIMIT 0,2"; // limita los posts que van a salir, limitamos a 5, posicionamos el puntero 
+                 	<?php 
+                 		$start=0;
+							if(isset($_GET['start'])){
+								$start=$_GET['start'];
+							}
+                 	 ?>
+                 	<?php $sql = "SELECT * FROM post LIMIT ".$start.",".LIMITER; // limita los posts que van a salir, limitamos a 5, posicionamos el puntero 
                  	//comienza en el inicio 0 y que me muestre 5 publicaciones. ?>
                  	
                  	  	<?php if ($result =$mysqli -> query ($sql)){ ?>
@@ -81,11 +88,39 @@
                     
                     
                     <ul class="pagination pagination-lg">
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                    	
+                    	<?php
+                    	
+                    		$sql="SELECT id_post FROM post";
+							$result =$mysqli -> query ($sql);
+							$page=ceil($result->num_rows/LIMITER);
+							//cuando le pasamos una división, el total del que nos de, le suma 1, por si hay 10 publicaciones y son 3
+							//el límite de publicaciones por páginas, son 4 páginas las que necesitamos, no 3. Así tenemos el número de páginas
+							//que vamos a tener. 
+							$x=0;
+							$active="";
+							for($i=1;$i<=$page;$i++){
+								
+								if($i==1){
+									if($start==0)$active='class="active"';
+									echo '<li '.$active.'><a href="'.$base_url.'index.php">'.$i.'</a></li>';
+									
+								}else{
+									
+									$x+=LIMITER;
+									if($start==$x)$active='class="active"';
+									echo '<li '.$active.'><a href="'.$base_url.'index.php?start='.$x.'">'.$i.'</a></li>';
+									
+								}
+								
+								$active="";
+								
+							}
+							
+						
+                    	
+                    	 ?>
+                       
                     </ul><!--/.pagination-->
                 </div><!--/.col-md-8-->
 

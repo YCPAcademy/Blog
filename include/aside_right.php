@@ -36,7 +36,7 @@
                             <div class="col-sm-12">
                                 <ul class="blog_archieve">
                                 	
-                                		<?php $sql = "SELECT date_post, COUNT('id_post') AS num_post FROM post"; ?>
+                                		<?php $sql = "SELECT date_post, COUNT('id_post') AS num_post FROM post GROUP BY date_post"; ?>
 	
                            					<?php if ($result =$mysqli -> query ($sql)){ ?>
                         	
