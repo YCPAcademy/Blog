@@ -37,7 +37,8 @@
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="blog.html">Blog</a></li> 
-                        <li><a href="contact-us.html">Contact</a></li>                        
+                        <li><a href="contact-us.html">Contact</a></li>
+                        <li><a href="contact-us.html">Login</a></li>                         
                     </ul>
                 </div>
             </div><!--/.container-->

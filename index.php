@@ -73,7 +73,7 @@
 				                                <a href="#"><?php $target_path="uploads"; echo '<img class="img-responsive img-blog" src="'.$target_path."/".$post['image_post'].'" width="100%" alt="" >';?></a>
 				                                <h2><a href="blog-item.html"><?php echo $post ['title_post']; ?></a></h2>
 				                                <h3><?php echo utf8_encode(blogdelimited ($post ['body_post'], 20)); ?></h3>
-				                                <a class="btn btn-primary readmore" href="<?php echo $base_url."single_post.php?id=".$post["id_post"]?>" >Leer más <i class="fa fa-angle-right"></i></a>
+				                                <a class="btn btn-primary readmore" href="<?php echo $base_url."single_post.php?id_post=".$post["id_post"]?>" >Leer más <i class="fa fa-angle-right"></i></a>
 				                            </div>
 				                        </div>    
 				                    </div><!--/.blog-item-->
