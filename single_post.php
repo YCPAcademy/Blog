@@ -66,7 +66,7 @@
 				                            <div class="col-xs-12 col-sm-10 blog-content">
 				                                <a href="#"><?php $target_path="uploads"; echo '<img class="img-responsive img-blog" src="'.$target_path."/".$row['image_post'].'" width="100%" alt="" >';?></a>
 				                                <h2><a href="blog-item.html"><?php echo $row ['title_post']; ?></a></h2>
-				                                <h3><?php echo $row['body_post']; ?></h3>
+				                                <h3><?php echo utf8_encode ($row['body_post']); ?></h3>
 				                            </div>
 				                        </div>    
 				                    </div><!--/.blog-item-->

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-01-2015 a las 22:24:38
+-- Tiempo de generación: 01-02-2015 a las 16:13:02
 -- Versión del servidor: 5.5.28-log
 -- Versión de PHP: 5.4.9
 
@@ -63,9 +63,9 @@ CREATE TABLE IF NOT EXISTS `post` (
 --
 
 INSERT INTO `post` (`id_post`, `id_category`, `title_post`, `body_post`, `tag_post`, `image_post`, `date_post`) VALUES
-(11, 1, 'pelicula terror', 'esto es una peli de terror', 'terror', 'foto2.jpg', '2015-01-27 21:36:10'),
-(12, 2, 'pelicula comedia', 'pelicula comedia ', 'pelicula comedia', 'foto1.jpg', '2015-01-27 18:45:32'),
-(13, 2, 'otra comedia', 'otra comedia', 'comedia', 'foto3.png', '2015-01-27 21:56:04');
+(11, 1, 'pelicula terror', 'El cine de terror es un género cinematográfico que se caracteriza por su voluntad de provocar en el espectador sensaciones de pavor, terror, miedo, disgusto, repugnancia, horror, incomodidad o preocupación. Sus argumentos frecuentemente desarrollan la súbita intrusión en un ámbito de normalidad de alguna fuerza, evento o personaje de naturaleza maligna, a menudo de origen criminal o sobrenatural.', 'terror', 'foto2.jpg', '2015-02-01 16:07:31'),
+(12, 2, 'pelicula comedia', 'Una comedia cinematográfica es una película con humor o que intenta provocar la risa de la audiencia. Junto con el drama y la ciencia ficción, la comedia es uno de los más importantes géneros cinematográficos.', 'pelicula comedia', 'foto1.jpg', '2015-02-01 16:11:04'),
+(13, 2, 'otra comedia', 'El cine cómico o cine de comedia, que se caracteriza por la inclusión de gags, chistes o bromas, tanto visuales como verbales, inicia su andadura prácticamente con el comienzo de este arte. ', 'comedia', 'foto3.png', '2015-02-01 16:12:04');
 
 -- --------------------------------------------------------
 
