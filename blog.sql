@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-02-2015 a las 16:13:02
+-- Tiempo de generación: 02-02-2015 a las 19:54:52
 -- Versión del servidor: 5.5.28-log
 -- Versión de PHP: 5.4.9
 
@@ -30,16 +30,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `name_category` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `category`
 --
 
 INSERT INTO `category` (`id_category`, `name_category`) VALUES
-(1, 'terror'),
-(2, 'comedia'),
-(3, 'drama');
+(4, 'Java'),
+(5, 'C++'),
+(6, 'Html'),
+(7, 'Css');
 
 -- --------------------------------------------------------
 
@@ -56,16 +57,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   `image_post` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date_post` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_post`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `post`
 --
 
 INSERT INTO `post` (`id_post`, `id_category`, `title_post`, `body_post`, `tag_post`, `image_post`, `date_post`) VALUES
-(11, 1, 'pelicula terror', 'El cine de terror es un género cinematográfico que se caracteriza por su voluntad de provocar en el espectador sensaciones de pavor, terror, miedo, disgusto, repugnancia, horror, incomodidad o preocupación. Sus argumentos frecuentemente desarrollan la súbita intrusión en un ámbito de normalidad de alguna fuerza, evento o personaje de naturaleza maligna, a menudo de origen criminal o sobrenatural.', 'terror', 'foto2.jpg', '2015-02-01 16:07:31'),
-(12, 2, 'pelicula comedia', 'Una comedia cinematográfica es una película con humor o que intenta provocar la risa de la audiencia. Junto con el drama y la ciencia ficción, la comedia es uno de los más importantes géneros cinematográficos.', 'pelicula comedia', 'foto1.jpg', '2015-02-01 16:11:04'),
-(13, 2, 'otra comedia', 'El cine cómico o cine de comedia, que se caracteriza por la inclusión de gags, chistes o bromas, tanto visuales como verbales, inicia su andadura prácticamente con el comienzo de este arte. ', 'comedia', 'foto3.png', '2015-02-01 16:12:04');
+(15, 4, 'ProgramaciÃ³n Java', 'Java es un lenguaje de programaciÃ³n de propÃ³sito general, concurrente, orientado a objetos que fue diseÃ±ado especÃ­ficamente para tener tan pocas dependencias de implementaciÃ³n como fuera posible. Su intenciÃ³n es permitir que los desarrolladores de aplicaciones escriban el programa una vez y lo ejecuten en cualquier dispositivo (conocido en inglÃ©s como WORA, o "write once, run anywhere"), lo que quiere decir que el cÃ³digo que es ejecutado en una plataforma no tiene que ser recompilado para correr en otra. Java es, a partir de 2012, uno de los lenguajes de programaciÃ³n mÃ¡s populares en uso, particularmente para aplicaciones de cliente-servidor de web, con unos 10 millones de usuarios reportados.', 'ProgramaciÃ³n, Java', 'foto1.jpg', '2015-02-02 19:51:00');
 
 -- --------------------------------------------------------
 
