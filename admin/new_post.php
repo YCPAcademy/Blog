@@ -86,7 +86,9 @@
                         			
                                     <form method="post" enctype="multipart/form-data">
                                     	
-                                    	<?php $sql= "SELECT * FROM category";?>
+                                    	
+                                    	
+                                    	<?php $sql ="SELECT * FROM category";?>
                                     	
                                     		<?php if ($result =$mysqli -> query ($sql)){ ?>
                         	
@@ -107,7 +109,7 @@
 			                                       
 			                                       <?php }else{ echo "no hay categorías creadas";}?>
 			                                       	
-			                                   <?php }else{echo "Error al añadir una categoría".$mysqli->error();}?>
+			                                   <?php }else{echo "Error al añadir una categoría".$mysqli->error;}?>
 			                                   
 			                                  
 			                                       	
