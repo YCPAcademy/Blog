@@ -36,15 +36,15 @@
                             <div class="col-sm-12">
                                 <ul class="blog_archieve">
                                 	
-                                		<?php $sql = "SELECT date_post, COUNT('id_post') AS num_post FROM post GROUP BY date_post"; ?>
+                                		<?php $sql = "SELECT date_format(date(date_post), '%d-%m-%Y') AS datepost, COUNT(date(date_post)) AS num_post FROM post GROUP BY(date(date_post))"; ?>
 	
-                           					<?php if ($result =$mysqli -> query ($sql)){ ?>
+                           					<?php if ($result = $mysqli -> query ($sql)){ ?>
                         	
                         	  					<?php if ($result -> num_rows >0){?>
                         	  	
-                        	  	 					<?php while ($post = $result -> fetch_array ()){ ?>
+                        	  	 					<?php while ($archive = $result -> fetch_array ()){ ?>
   	
-							                           	 <li><a href="#"><i class="fa fa-angle-double-right"></i><?php echo $post["date_post"]?><span class="pull-right"><?php echo $post["num_post"]?></span></a></li>
+							                           	 <li><a href="#"><i class="fa fa-angle-double-right"></i><?php echo $archive["datepost"]?><span class="pull-right"><?php echo $archive["num_post"]?></span></a></li>
   
 							                          <?php } ?>
 							                          

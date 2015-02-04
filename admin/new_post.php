@@ -113,17 +113,17 @@
 			                                       	
 			                                    	<div class="form-group">
 			                                            <label>Título publicación</label>
-			                                            <input value="<?php if(isset($_POST['title_post'])) echo utf8_encode ($_POST['title_post']) ?>" name="title_post" type="text" class="form-control"/>
+			                                            <input value="<?php if(isset($_POST['title_post'])) echo $_POST['title_post'] ?>" name="title_post" type="text" class="form-control"/>
 			                                        </div>
 			                                        
 				                                    <div class="form-group">
 	                                                    <label>Cuerpo publicación</label>
-	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php if(isset($_POST['body_post'])) echo utf8_encode ($_POST['body_post']) ?></textarea>
+	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php if(isset($_POST['body_post'])) echo $_POST['body_post'] ?></textarea>
 	                                                </div>
 	                                                
 			                                         <div class="form-group">
 	                                                    <label>Tags</label>
-	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php if(isset($_POST['tag_post'])) echo utf8_encode ($_POST['tag_post']) ?></textarea>
+	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php if(isset($_POST['tag_post'])) echo $_POST['tag_post'] ?></textarea>
 	                                                </div>
                                         
                                         			<div class="form-group">
@@ -157,7 +157,7 @@
 																	
 														    }else{
 														    
-															        echo "Error al añadir una publicación".$mysqli->error();
+															        echo "Error al añadir una publicación".$mysqli->error;
 														    }
 								
 												
