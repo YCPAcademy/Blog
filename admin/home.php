@@ -61,7 +61,7 @@
         	
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Home</h1>
+                    <h1 class="page-header">Inicio</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -76,7 +76,24 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                	
+                                	<?php $sql = "SELECT COUNT('id_category') AS num_category FROM category"; ?>
+	
+                           					<?php if ($result =$mysqli -> query ($sql)){ ?>
+                        	
+                        	  					<?php if ($result -> num_rows >0){?>
+                        	  	
+                        	  	 					<?php while ($category = $result -> fetch_array ()){ ?>
+  	
+							                           	<div class="huge"><?php echo $category["num_category"]?></div>
+  
+							                          <?php } ?>
+							                          
+							                       <?php } ?>
+							                       
+							                    <?php } ?>
+							                    
+                                   
                                     <div>Categorías</div>
                                 </div>
                             </div>
@@ -98,7 +115,23 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
+                                	
+                                		<?php $sql = "SELECT COUNT('id_post') AS num_post FROM post"; ?>
+	
+                           					<?php if ($result =$mysqli -> query ($sql)){ ?>
+                        	
+                        	  					<?php if ($result -> num_rows >0){?>
+                        	  	
+                        	  	 					<?php while ($post = $result -> fetch_array ()){ ?>
+  	
+							                           	<div class="huge"><?php echo $post["num_post"]?></div>
+  
+							                          <?php } ?>
+							                          
+							                       <?php } ?>
+							                       
+							                    <?php } ?>
+                                    
                                     <div>Publicaciones</div>
                                 </div>
                             </div>

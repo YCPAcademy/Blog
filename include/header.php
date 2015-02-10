@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-xs-4">
-                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
+                        <div class="top-number"><p><i class=""></i></p></div>
                     </div>
                     <div class="col-sm-6 col-xs-8">
                        <div class="social">
@@ -36,9 +36,28 @@
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="blog.html">Blog</a></li> 
-                        <li><a href="contact-us.html">Contact</a></li>
-                        <li><a href="contact-us.html">Login</a></li>                         
+                    	
+                    	<?php 
+                
+                    	$pestana=0; 
+                    	
+                    	if(isset($_GET['pestana'])){
+								$start=$_GET['pestana'];
+							}
+							
+						for($pestana=0;$pestana<3;$pestana++){
+							if ($pestana==0){
+								echo '<li class="active"><a href="blog.html">Blog</a></li>'; 
+							}else if ($pestana==1) {
+								echo '<li class="active"><a href="'.$base_url_contacto.'contacto.php">Contacto</a></li>';	
+							}else{
+								echo '<li class="active"><a href="'.$base_url_login.'index.php">Login</a></li>';	
+							}
+						}
+						
+						?>
+							
+                    	                       
                     </ul>
                 </div>
             </div><!--/.container-->

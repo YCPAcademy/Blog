@@ -1,6 +1,6 @@
 <?php include "/include/config.php"; ?>
 <?php include "/function/blogfunction.php"; ?>
-<?php define ('LIMITER',1); ?>
+<?php define ('LIMITER',2); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +37,8 @@
 
     <section id="blog" class="container">
         <div class="center">
-            <h2>Blogs</h2>
-            <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+            <h2>Informática online</h2>
+            <p class="lead">¡Bienvenido a este foro de informática! Soluciona todas tus dudas.</p>
         </div>
 
         <div class="blog">

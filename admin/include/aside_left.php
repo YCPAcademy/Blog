@@ -5,7 +5,7 @@
         <ul class="nav" id="side-menu">
         	
             <li>
-                <a href="<?php echo $base_url. "index.php" ?>"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                <a href="<?php echo $base_url. "index.php" ?>"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
             </li>
             
             <li>

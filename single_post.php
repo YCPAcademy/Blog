@@ -37,8 +37,8 @@
 
     <section id="blog" class="container">
         <div class="center">
-            <h2>Blogs</h2>
-            <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+            <h2>Informática online</h2>
+            <p class="lead">¡Bienvenido a este foro de informática! Soluciona todas tus dudas.</p>
         </div>
 
         <div class="blog">
@@ -65,8 +65,8 @@
 				                            
 				                            <div class="col-xs-12 col-sm-10 blog-content">
 				                                <a href="#"><?php $target_path="uploads"; echo '<img class="img-responsive img-blog" src="'.$target_path."/".$row['image_post'].'" width="100%" alt="" >';?></a>
-				                                <h2><a href="blog-item.html"><?php echo $row ['title_post']; ?></a></h2>
-				                                <h3><?php echo utf8_encode ($row['body_post']); ?></h3>
+				                                <h2><?php echo $row ['title_post']; ?></h2>
+				                                <h3  align="justify"><?php echo $row['body_post']; ?></h3>
 				                            </div>
 				                        </div>    
 				                    </div><!--/.blog-item-->
@@ -78,12 +78,15 @@
                     
                     <ul class="pagination pagination-lg">
                     	
+                    	<?php
+                    	
+							echo '<li class="active"><a href="'.$base_url.'index.php">Atrás</a></li>';
+								
+                    	 ?>
                     	
                        
                     </ul><!--/.pagination-->
                 </div><!--/.col-md-8-->
-
-               <?php include "/include/aside_right.php"; ?>
                
             </div><!--/.row-->
         </div>
