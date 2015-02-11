@@ -31,7 +31,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                    <a class="navbar-brand" href="index.html"><img src="../images/logo.png" alt="logo"></a>
                 </div>
                 
                 <div class="collapse navbar-collapse navbar-right">
@@ -46,22 +46,22 @@
 				
 									if ($url=='/blog/index.php'){
 												
-											echo '<li class="active"><a href="'.$base_url.'index.php">Blog</a></li>';
-										    echo '<li><a href="'.$base_url.'contacto.php">Contacto</a></li>';
-											echo '<li><a href="'.$base_url_login.'index.php">Login</a></li>';
+											echo '<li class="active"><a href="'.$base_url_new.'index.php">Blog</a></li>';
+										    echo '<li><a href="'.$base_url_new.'contacto.php">Contacto</a></li>';
+											echo '<li><a href="'.$base_url.'index.php">Login</a></li>';
 												
 										
 									}else if ($url=='/blog/contacto.php'){
 										
-											echo '<li><a href="'.$base_url.'index.php">Blog</a></li>';
-										    echo '<li class="active"><a href="'.$base_url.'contacto.php">Contacto</a></li>';
-											echo '<li><a href="'.$base_url_login.'index.php">Login</a></li>';
+											echo '<li><a href="'.$base_url_new.'index.php">Blog</a></li>';
+										    echo '<li class="active"><a href="'.$base_url_new.'contacto.php">Contacto</a></li>';
+											echo '<li><a href="'.$base_url.'index.php">Login</a></li>';
 									
 									}else {
 										
-											echo '<li><a href="'.$base_url.'index.php">Blog</a></li>';
-										    echo '<li><a href="'.$base_url.'contacto.php">Contacto</a></li>';
-											echo '<li class="active"><a href="'.$base_url_login.'index.php">Login</a></li>';
+											echo '<li><a href="'.$base_url_new.'index.php">Blog</a></li>';
+										    echo '<li><a href="'.$base_url_new.'contacto.php">Contacto</a></li>';
+											echo '<li class="active"><a href="'.$base_url.'index.php">Login</a></li>';
 											
 									}
 				          
