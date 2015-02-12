@@ -107,7 +107,7 @@
                                     	
                                     		if(isset($_POST['submit'])){
                                     			
-							                    if (valida_datos($_POST['name_category'])==TRUE){
+							                    if (valida_categoria ($_POST['name_category'])==TRUE){
                                     			
 							
 														$sql = "UPDATE category SET  name_category = '".$_POST ["name_category"]."' WHERE 

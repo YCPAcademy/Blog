@@ -100,7 +100,7 @@
 						
 											if(isset($_POST['submit'])){
 												
-												if (valida_datos ($_POST['name_category'])==TRUE){
+												if (valida_categoria ($_POST['name_category'])==TRUE){
 												
 														$sql = "INSERT INTO category (name_category) VALUES ('".$_POST["name_category"]."')";
 														

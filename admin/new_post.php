@@ -115,7 +115,9 @@
 			                                       	
 			                                    	<div class="form-group">
 			                                            <label>Título publicación</label>
-			                                            <input value="<?php if(isset($_POST['title_post'])) echo $_POST['title_post'] ?>" name="title_post" type="text" class="form-control"/>
+			                                            <input value="<?php if(isset($_POST['title_post'])){
+			                                            						if (valida_titulo ($_POST['title_post'])==TRUE){
+			                                            								echo $_POST['title_post'];}} ?>" name="title_post" type="text" class="form-control"/>
 			                                        </div>
 			                                        
 				                                    <div class="form-group">
