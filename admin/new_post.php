@@ -1,9 +1,11 @@
 <?php session_start();?>
 <?php include "/include/config.php"; ?>
 <?php include "/funciones/valida_datos.php";?>
+<?php include "/function/uploads.php"; ?>
 <?php  if (!isset($_SESSION['user_name'])){?>
 	<?php header("Location:index.php");?>
 <?php  } else {?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,19 +117,17 @@
 			                                       	
 			                                    	<div class="form-group">
 			                                            <label>Título publicación</label>
-			                                            <input value="<?php if(isset($_POST['title_post'])){
-			                                            						if (valida_titulo ($_POST['title_post'])==TRUE){
-			                                            								echo $_POST['title_post'];}} ?>" name="title_post" type="text" class="form-control"/>
+			                                            <input value="<?php if(isset($_POST['title_post'])) echo $_POST['title_post']; ?>" name="title_post" type="text" class="form-control"/>
 			                                        </div>
 			                                        
 				                                    <div class="form-group">
 	                                                    <label>Cuerpo publicación</label>
-	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php if(isset($_POST['body_post'])) echo $_POST['body_post'] ?></textarea>
+	                                                    <textarea name="body_post"  class="form-control" rows="3"><?php if(isset($_POST['body_post'])) echo $_POST['body_post'];?></textarea>
 	                                                </div>
 	                                                
 			                                         <div class="form-group">
 	                                                    <label>Tags</label>
-	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php if(isset($_POST['tag_post'])) echo $_POST['tag_post'] ?></textarea>
+	                                                    <textarea name="tag_post" class="form-control" rows="3"><?php if(isset($_POST['tag_post']))echo $_POST['tag_post'];?></textarea>
 	                                                </div>
                                         
                                         			<div class="form-group">
@@ -143,9 +143,11 @@
 						
 											if(isset($_POST['submit'])){
 												
-												$sql = "INSERT INTO post (id_category, title_post, body_post, tag_post, image_post)
-							                    VALUES (".$_POST["id_category"].",'".$_POST["title_post"]."','".$_POST["body_post"]."',
-							                    '".$_POST["tag_post"]."','".$_FILES["image_post"]["name"]."')";
+												if(!empty($_POST["title_post"]) AND !empty($_POST["body_post"]) AND !empty($_POST["tag_post"]) AND !empty($_FILES["image_post"]["name"])){
+												
+														$sql = "INSERT INTO post (id_category, title_post, body_post, tag_post, image_post)
+									                    VALUES (".$_POST["id_category"].",'".$_POST["title_post"]."','".$_POST["body_post"]."',
+									                    '".$_POST["tag_post"]."','".$_FILES["image_post"]["name"]."')";
 												
 															if ($mysqli -> query($sql) === TRUE){
 																		
@@ -153,19 +155,33 @@
 													                $target_path="../uploads/";
 																	$target_path=$target_path.basename($_FILES["image_post"]["name"]);
 																	
-																	if(move_uploaded_file($_FILES["image_post"]["tmp_name"], $target_path)){//tmp_name nombre temporal, ruta y nombre del archivo para que haga la subida del archivo
-																    	echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+																	if(move_uploaded_file($_FILES["image_post"]["tmp_name"], $target_path)){//tmp_name nombre temporal, ruta y nombre del archivo para que haga la subida del archivo.
+																		
+																		if ((cumple_tamano ($target_path)==TRUE)){
+																			
+																    	    echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+																    		
+																		}else{
+																			
+																			echo "La imagen a subir no mide 620x295.";
+																		}
+																	
 																	}else{
+																		
 																		echo "Error al subir la imagen. Inténtelo más tarde.";
 																	}
 																	
 														    }else{
 														    
-															        echo "Error al añadir una publicación".$mysqli->error;
+															       echo "Error al añadir una publicación".$mysqli->error;
 														    }
+															
+													}else{
+														
+														echo "Algunos de los campos a rellenar están vacíos.";
+													}
 								
-												
-											 
+											
 											}
 										
 			                              ?>

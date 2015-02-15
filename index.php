@@ -1,5 +1,6 @@
 <?php include "/include/config.php"; ?>
 <?php include "/function/blogfunction.php"; ?>
+
 <?php define ('LIMITER',2); ?>
 
 <!DOCTYPE html>

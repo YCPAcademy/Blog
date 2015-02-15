@@ -1,14 +1,15 @@
+<?php define ('width',620); ?>
+<?php define ('height',295); ?>
 <?php
 
-	function valida_categoria ($text){
+	function valida_categoria ($text){ //validamos que la categoría sea de 3 a 25 caracteres, y que pueda contener números, letras, -, _ y + y que no esté vacía.
 		
-	$boleano=TRUE;
+		$boleano=TRUE;
 	    
 		    if(!empty($text)){
 	
 				if(preg_match('/^[0-9a-zA-Z\-_+]{3,25}$/i', $text)){
 					
-					ucwords (strtolower ($text));
 					$boleano=TRUE;
 					
 				}else{
@@ -22,33 +23,28 @@
 			}
 	
 		return $boleano;
-	}
+	}	
 	
-	
-	function valida_titulo ($text){
+	function cumple_tamano ($target_path){
 		
-	$boleano=TRUE;
-	    
-		    if(!empty($text)){
-	
-				if(preg_match('/^[[0-9a-zA-Z\-_+ ]{4,15}$/i', $text)){
-					
-					ucwords (strtolower ($text));
-					$boleano=TRUE;
-					
-				}else{
-					
-					$boleano=FALSE;
-				}
+		$boleano=TRUE;
+		$img_fuente=@imagecreatefromjpeg($target_path) ;
+		$img_ancho=imagesx($img_fuente); 
+		$img_alto=imagesy($img_fuente); 
+		   
+			 if (($img_ancho <= width) AND ($img_alto <= height)){
+			   	
+			   $result = TRUE;
 				
 			}else{
 				
-				$boleano=FALSE;
+				$result = FALSE;
 			}
+				
+			
+			return 	$result;						
 	
-		return $boleano;
-	}
-	
+		}
 ?>
 
 

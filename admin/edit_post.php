@@ -1,9 +1,11 @@
 <?php session_start();?>
 <?php include "/include/config.php"; ?>
 <?php include "/funciones/valida_datos.php";?>
+<?php include "/function/uploads.php"; ?>
 <?php if (!isset($_SESSION['user_name'])){?>
 	<?php header("Location:index.php");?>
 <?php } else {?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -155,9 +157,18 @@
 														 
 														 
 															 if ($mysqli -> query($sql) === TRUE){
-											
-																$mysqli->close();
-											    				echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+																		
+																if ((!empty($_POST["title_post"])) AND (!empty($_POST ["body_post"])) AND (!empty($_POST ["tag_post"])) AND (!empty($_FILES["image_post"]["name"]))){	
+																
+																	$mysqli->close();
+												    				echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+																
+																}else{
+																	
+																	echo "Algunos de los campos está vacío.";
+																	
+																}
+																
 												
 															 }else{
 									    
