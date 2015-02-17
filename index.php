@@ -51,7 +51,7 @@
 								$start=$_GET['start'];
 							}
                  	 ?>
-                 	<?php $sql = "SELECT * FROM post LIMIT ".$start.",".LIMITER; // limita los posts que van a salir, limitamos a 5, posicionamos el puntero 
+                 	<?php $sql = "SELECT * FROM post ORDER BY id_post DESC LIMIT ".$start.",".LIMITER; // limita los posts que van a salir, limitamos a 5, posicionamos el puntero 
                  	//comienza en el inicio 0 y que me muestre 5 publicaciones. ?>
                  	
                  	  	<?php if ($result =$mysqli -> query ($sql)){ ?>

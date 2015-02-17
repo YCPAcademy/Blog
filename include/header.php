@@ -41,17 +41,8 @@
                     	
                     		$url=$_SERVER['REQUEST_URI']; //Obtengo la página actual
 				
-				          	
-				
-				
-									if ($url=='/blog/index.php'){
-												
-											echo '<li class="active"><a href="'.$base_url.'index.php">Blog</a></li>';
-										    echo '<li><a href="'.$base_url.'contacto.php">Contacto</a></li>';
-											echo '<li><a href="'.$base_url_login.'index.php">Login</a></li>';
-												
-										
-									}else if ($url=='/blog/contacto.php'){
+				   
+									if ($url=='/blog/contacto.php'){
 										
 											echo '<li><a href="'.$base_url.'index.php">Blog</a></li>';
 										    echo '<li class="active"><a href="'.$base_url.'contacto.php">Contacto</a></li>';
@@ -59,9 +50,9 @@
 									
 									}else {
 										
-											echo '<li><a href="'.$base_url.'index.php">Blog</a></li>';
+											echo '<li class="active"><a href="'.$base_url.'index.php">Blog</a></li>';
 										    echo '<li><a href="'.$base_url.'contacto.php">Contacto</a></li>';
-											echo '<li class="active"><a href="'.$base_url_login.'index.php">Login</a></li>';
+											echo '<li><a href="'.$base_url_login.'index.php">Login</a></li>';
 											
 									}
 				          

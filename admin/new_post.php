@@ -143,7 +143,14 @@
 						
 											if(isset($_POST['submit'])){
 												
+										
+										        $target_path="../uploads/";
+											    $target_path=$target_path.basename($_FILES["image_post"]["name"]);
+														
+									
 												if(!empty($_POST["title_post"]) AND !empty($_POST["body_post"]) AND !empty($_POST["tag_post"]) AND !empty($_FILES["image_post"]["name"])){
+														
+														if (cumple_tamano ($target_path)==TRUE){
 												
 														$sql = "INSERT INTO post (id_category, title_post, body_post, tag_post, image_post)
 									                    VALUES (".$_POST["id_category"].",'".$_POST["title_post"]."','".$_POST["body_post"]."',
@@ -152,19 +159,12 @@
 															if ($mysqli -> query($sql) === TRUE){
 																		
 																	$mysqli->close();
-													                $target_path="../uploads/";
-																	$target_path=$target_path.basename($_FILES["image_post"]["name"]);
-																	
+													          
 																	if(move_uploaded_file($_FILES["image_post"]["tmp_name"], $target_path)){//tmp_name nombre temporal, ruta y nombre del archivo para que haga la subida del archivo.
 																		
-																		if ((cumple_tamano ($target_path)==TRUE)){
 																			
 																    	    echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
 																    		
-																		}else{
-																			
-																			echo "La imagen a subir no mide 620x295.";
-																		}
 																	
 																	}else{
 																		
@@ -175,6 +175,11 @@
 														    
 															       echo "Error al añadir una publicación".$mysqli->error;
 														    }
+															
+														}else{
+																		
+																echo "El tamaño de la imagen es mayor a 620x295.";
+														}
 															
 													}else{
 														

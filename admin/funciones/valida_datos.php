@@ -23,9 +23,11 @@
 			}
 	
 		return $boleano;
-	}	
+	}
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+		
 	
-	function cumple_tamano ($target_path){
+	function cumple_tamano ($target_path){ //la foto tiene que cumplir con el ancho y alto establecidos.
 		
 		$boleano=TRUE;
 		$img_fuente=@imagecreatefromjpeg($target_path) ;

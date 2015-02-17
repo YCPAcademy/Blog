@@ -37,7 +37,7 @@
             <div class="center"> 
             	<br>      
                 <h2>Contacta con nosotros</h2>
-                <p class="lead">Quieres contactar con nostros?</p>
+                <p class="lead">¿Quieres contactar con nostros?</p>
             </div> 
             
             <div class="row contact-wrap"> 
@@ -54,11 +54,11 @@
                         </div>
                         <div class="form-group">
                             <label>Teléfono</label>
-                            <input type="number" class="form-control">
+                            <input name="telefono" type="number" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Empresa</label>
-                            <input type="text" class="form-control">
+                            <input name="empresa" type="text" class="form-control">
                         </div>                        
                     </div>
                     <div class="col-sm-5">
@@ -75,7 +75,51 @@
                         </div>
                     </div>
                 </form> 
-            </div><!--/.row-->
+                
+                <?php
+            
+							
+							if(isset($_POST['submit'])) {
+							
+							
+								$email_to = "inma.mramirez@gmail.com";
+								$email_subject = "Contacto";
+							
+							
+									if(!isset($_POST['name']) ||
+									!isset($_POST['email']) ||
+									!isset($_POST['telefono']) ||
+									!isset($_POST['empresa']) ||
+									!isset($_POST['subject']) ||
+									!isset($_POST['message'])) {
+							
+							echo "Ocurrió un error y el formulario no ha sido enviado.";
+							
+							die();
+							
+							}
+							
+						
+							$email_message .= "Nombre: " . $_POST['name'] . "</br>";
+							$email_message .= "Email: " . $_POST['email'] . "</br>";
+							$email_message .= "Teléfono: " . $_POST['telefono'] . "</br>";
+							$email_message .= "Empresa: " . $_POST['empresa'] . "</br>";
+							$email_message .= "Asunto: " . $_POST['subject'] . "</br>";
+							$email_message .= "Mensaje: " . $_POST['message'] . "</br>";
+							
+							
+							
+							$headers = 'From: '.$email_from."</br>".'Reply-To: '.$email_from."</br>" .'X-Mailer: PHP/' . phpversion();
+							@mail($email_to, $email_subject, $email_message, $headers);
+							
+							echo "¡El formulario se ha enviado con éxito!";
+							}
+
+							?>
+							
+
+                
+					</div><!--/.row-->
         </div><!--/.container-->
     </section><!--/#contact-page-->
 
