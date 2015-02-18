@@ -2,13 +2,14 @@
 <?php define ('height',295); ?>
 <?php
 
-	function valida_categoria ($text){ //validamos que la categoría sea de 3 a 25 caracteres, y que pueda contener números, letras, -, _ y + y que no esté vacía.
+	function valida_categoria ($text){ //validamos que la categoría sea de 3 a 25 caracteres, y que pueda contener números, letras y espacios en blanco.
+									   //Comprueba también que no esté vacía.
 		
 		$boleano=TRUE;
 	    
 		    if(!empty($text)){
 	
-				if(preg_match('/^[0-9a-zA-Z\-_+]{3,25}$/i', $text)){
+				if(preg_match('/^[0-9a-zA-Z\s]{3,25}$/i', $text)){
 					
 					$boleano=TRUE;
 					

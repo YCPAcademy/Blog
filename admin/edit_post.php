@@ -150,7 +150,7 @@
                                     	
                                     		if(isset($_POST['submit'])){
                                     			
-							               			if ((!empty($_POST["title_post"])) AND (!empty($_POST ["body_post"])) AND (!empty($_POST ["tag_post"])) AND (!empty($_FILES["image_post"]["name"]))){
+							               			if ((!empty($_POST["id_category"])) AND (!empty($_POST["title_post"])) AND (!empty($_POST ["body_post"])) AND (!empty($_POST ["tag_post"])) AND (!empty($_FILES["image_post"]["name"]))){
 							               				
 														$sql = "UPDATE post SET  title_post = '".$_POST ["title_post"]."', body_post = '".$_POST ["body_post"]."',
 														tag_post = '".$_POST ["tag_post"]."', image_post ='".$_FILES["image_post"]["name"]."' WHERE id_post =".$_GET['id_post'];

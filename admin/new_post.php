@@ -148,7 +148,7 @@
 											    $target_path=$target_path.basename($_FILES["image_post"]["name"]);
 														
 									
-												if(!empty($_POST["title_post"]) AND !empty($_POST["body_post"]) AND !empty($_POST["tag_post"]) AND !empty($_FILES["image_post"]["name"])){
+												if(!empty($_POST["id_category"]) AND !empty($_POST["title_post"]) AND !empty($_POST["body_post"]) AND !empty($_POST["tag_post"]) AND !empty($_FILES["image_post"]["name"])){
 														
 														if (cumple_tamano ($target_path)==TRUE){
 												

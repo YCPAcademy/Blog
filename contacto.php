@@ -37,12 +37,12 @@
             <div class="center"> 
             	<br>      
                 <h2>Contacta con nosotros</h2>
-                <p class="lead">¿Quieres contactar con nostros?</p>
+                <p class="lead">¿Quieres contactar con nosotros?</p>
             </div> 
             
             <div class="row contact-wrap"> 
                 <div class="status alert alert-success" style="display: none"></div>
-                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="contacto.php">
                     <div class="col-sm-5 col-sm-offset-1">
                         <div class="form-group">
                             <label>Nombre *</label>
@@ -115,7 +115,7 @@
 							echo "¡El formulario se ha enviado con éxito!";
 							}
 
-							?>
+					?>
 							
 
                 
