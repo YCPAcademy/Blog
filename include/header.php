@@ -46,13 +46,13 @@
 										
 											echo '<li><a href="'.$base_url.'index.php">Blog</a></li>';
 										    echo '<li class="active"><a href="'.$base_url.'contacto.php">Contacto</a></li>';
-											echo '<li><a href="'.$base_url_login.'index.php">Login</a></li>';
+											echo '<li><a href="'.$base_url_login.'index.php" target="_blank">Login</a></li>';
 									
 									}else {
 										
 											echo '<li class="active"><a href="'.$base_url.'index.php">Blog</a></li>';
 										    echo '<li><a href="'.$base_url.'contacto.php">Contacto</a></li>';
-											echo '<li><a href="'.$base_url_login.'index.php">Login</a></li>';
+											echo '<li><a href="'.$base_url_login.'index.php" target="_blank">Login</a></li>';
 											
 									}
 				          

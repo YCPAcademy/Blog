@@ -102,7 +102,7 @@
 												
 												if (valida_categoria ($_POST['name_category'])==TRUE){
 												
-														$sql = "INSERT INTO category (name_category) VALUES ('".$_POST["name_category"]."')";
+														$sql = "INSERT INTO category (name_category) VALUES ('".$_POST["name_category"]."') ";
 														
 															if ($mysqli -> query($sql) === TRUE){
 																		

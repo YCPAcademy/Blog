@@ -45,6 +45,13 @@
             <div class="row">
                  <div class="col-md-8">
                  	
+                 	<?php 
+                 		$start=0;
+							if(isset($_GET['start'])){
+								$start=$_GET['start'];
+							}
+                 	 ?>
+                 	
                  	<?php $sql = "SELECT * FROM post WHERE id_post=".$_GET['id_post'];?>
                  	
                  	  	<?php if ($result =$mysqli -> query ($sql)){ ?>
@@ -78,13 +85,9 @@
                     
                     <ul class="pagination pagination-lg">
                     	
-                    	<?php
                     	
-							echo '<li class="active"><a href="'.$base_url.'index.php">Atrás</a></li>';
-								
-                    	 ?>
-                    	
-                       
+                    	    <li class="active"><a href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Atrás</a></li>
+                    	   
                     </ul><!--/.pagination-->
                 </div><!--/.col-md-8-->
                

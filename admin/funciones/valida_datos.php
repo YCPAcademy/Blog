@@ -25,8 +25,32 @@
 	
 		return $boleano;
 	}
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+	    
 		
+	function valida_email ($text){ 
+		
+		$boleano=TRUE;
+	    
+		    if(!empty($text)){
+	
+				if(!preg_match('/^[a-z|\.|\_|\-]+@+[a-z|\.\_\-]+\.(org|com)$/i', $text)){
+					
+					$boleano=TRUE;
+					
+				}else{
+					
+					$boleano=FALSE;
+				}
+				
+			}else{
+				
+				$boleano=FALSE;
+			}
+	
+		return $boleano;
+	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+		
+
 	
 	function cumple_tamano ($target_path){ //la foto tiene que cumplir con el ancho y alto establecidos.
 		
