@@ -1,4 +1,5 @@
 <?php include "/include/config.php"; ?>
+<?php include "admin/funciones/valida_form_contacta.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,11 +51,11 @@
                         </div>
                         <div class="form-group">
                             <label>Email *</label>
-                            <input type="email" name="email" class="form-control">
+                            <input name="email" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Teléfono</label>
-                            <input name="telefono" type="number" class="form-control">
+                            <input name="telefono" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Empresa</label>
@@ -76,47 +77,42 @@
                     </div>
                 </form> 
                 
-                <?php
-            
+               <?php 
+               
+               if(isset($_POST['submit'])){
+               
+		               if (valida_form_contacta ($data = array (
+		                                               'name' => ($_POST['name']),
+													   'email' => ($_POST['email']),
+													   'telefono' => ($_POST['telefono']),
+													   'empresa' => ($_POST['empresa']),
+													   'subject' => ($_POST['subject']),
+													   'message' => ($_POST['message'])))==""){
 							
-							if(isset($_POST['submit'])) {
-							
-							
-								$email_to = "inma.mramirez@gmail.com";
-								$email_subject = "Contacto";
-							
-							
-									if(!isset($_POST['name']) ||
-									!isset($_POST['email']) ||
-									!isset($_POST['telefono']) ||
-									!isset($_POST['empresa']) ||
-									!isset($_POST['subject']) ||
-									!isset($_POST['message'])) {
-							
-							echo "Ocurrió un error y el formulario no ha sido enviado.";
-							
-							die();
-							
-							}
-							
+						echo "Su Correo se envio correctamente.";
 						
-							$email_message .= "Nombre: " . $_POST['name'] . "</br>";
-							$email_message .= "Email: " . $_POST['email'] . "</br>";
-							$email_message .= "Teléfono: " . $_POST['telefono'] . "</br>";
-							$email_message .= "Empresa: " . $_POST['empresa'] . "</br>";
-							$email_message .= "Asunto: " . $_POST['subject'] . "</br>";
-							$email_message .= "Mensaje: " . $_POST['message'] . "</br>";
+			
+							$para      = 'inma.mramirez@gmail.com';
+							$titulo    = 'El título';
+							$mensaje   = 'Prueba de envío de email';
+							$cabeceras = 'From: webmaster@example.com' . "\r\n" .
+							    'Reply-To: webmaster@example.com' . "\r\n" .
+							    'X-Mailer: PHP/' . phpversion();
 							
+							mail($para, $titulo, $mensaje, $cabeceras);
+			
+					 }else{
+					 	
+						echo "Su correo no ha podido ser enviado";
+					 	
+					 }
+					 
+			    }else{
+			             	
+					echo $mysqli->error;
 							
-							
-							$headers = 'From: '.$email_from."</br>".'Reply-To: '.$email_from."</br>" .'X-Mailer: PHP/' . phpversion();
-							@mail($email_to, $email_subject, $email_message, $headers);
-							
-							echo "¡El formulario se ha enviado con éxito!";
-							}
-
-					?>
-							
+			    }
+			   ?>
 
                 
 					</div><!--/.row-->

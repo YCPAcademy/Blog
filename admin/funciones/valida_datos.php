@@ -33,7 +33,7 @@
 	    
 		    if(!empty($text)){
 	
-				if(!preg_match('/^[a-z|\.|\_|\-]+@+[a-z|\.\_\-]+\.(org|com)$/i', $text)){
+				if(preg_match('/^[a-z|\.|\_|\-]+@+[a-z|\.\_\-]+\.(org|com|es)$/i', $text)){
 					
 					$boleano=TRUE;
 					
