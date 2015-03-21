@@ -39,6 +39,7 @@
             	<br>      
                 <h2>Contacta con nosotros</h2>
                 <p class="lead">¿Quieres contactar con nosotros?</p>
+                <p>(Los campos con * son obligatorios)</p>
             </div> 
             
             <div class="row contact-wrap"> 
@@ -54,7 +55,7 @@
                             <input name="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Teléfono</label>
+                            <label>Teléfono *</label>
                             <input name="telefono" class="form-control">
                         </div>
                         <div class="form-group">
@@ -80,12 +81,11 @@
                <?php 
                
                if(isset($_POST['submit'])){
-               
-		               if (valida_form_contacta ($data = array (
+               	
+						if (valida_form_contacta ($data = array (
 		                                               'name' => ($_POST['name']),
 													   'email' => ($_POST['email']),
 													   'telefono' => ($_POST['telefono']),
-													   'empresa' => ($_POST['empresa']),
 													   'subject' => ($_POST['subject']),
 													   'message' => ($_POST['message'])))==""){
 							
@@ -104,15 +104,15 @@
 					 }else{
 					 	
 						echo "Su correo no ha podido ser enviado";
-					 	
 					 }
 					 
-			    }else{
+				
+			 }else{
 			             	
 					echo $mysqli->error;
 							
-			    }
-			   ?>
+			   }
+	 ?>
 
                 
 					</div><!--/.row-->
