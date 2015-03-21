@@ -21,9 +21,12 @@
 			}
 			if(isset($data['telefono']) AND $alert ==""){
 				
-				if(!preg_match('/^[0-9]{9}$/', $data['telefono']))
-					$alert = 'El Teléfono no tiene un formato válido.';
-				
+				if (empty ($data['telefono'])){
+				    $alert="";
+				}else{
+					if(!preg_match('/^[0-9]{9}$/', $data['telefono']))
+						$alert = 'El Teléfono no tiene un formato válido.';
+				}
 			}
 			if(isset($data['subject']) AND $alert ==""){
 				

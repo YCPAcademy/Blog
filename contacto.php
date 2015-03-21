@@ -55,7 +55,7 @@
                             <input name="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Teléfono *</label>
+                            <label>Teléfono</label>
                             <input name="telefono" class="form-control">
                         </div>
                         <div class="form-group">
@@ -89,7 +89,7 @@
 													   'subject' => ($_POST['subject']),
 													   'message' => ($_POST['message'])))==""){
 							
-						echo "Su Correo se envio correctamente.";
+						echo "Su Correo se envió.";
 						
 			
 							$para      = 'inma.mramirez@gmail.com';
