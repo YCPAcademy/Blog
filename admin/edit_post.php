@@ -154,8 +154,8 @@
 							               				
 														$sql = "UPDATE post SET  title_post = '".$_POST ["title_post"]."', body_post = '".$_POST ["body_post"]."',
 														tag_post = '".$_POST ["tag_post"]."', image_post ='".$_FILES["image_post"]["name"]."' WHERE id_post =".$_GET['id_post'];
-														 
-														 
+														
+												
 															 if ($mysqli -> query($sql) === TRUE){
 																		
 																	$mysqli->close();
@@ -165,10 +165,29 @@
 									    
 																echo "Error al editar publicación".$mysqli->error();
 															 }
+														
+													    
 													 }else{
-																	
+													 	
+														 if (empty($_FILES["image_post"]["name"])){
+														 			
+															$sql = "UPDATE post SET  title_post = '".$_POST ["title_post"]."', body_post = '".$_POST ["body_post"]."',
+															tag_post = '".$_POST ["tag_post"]."' WHERE id_post =".$_GET['id_post'];
+															
+															if ($mysqli -> query($sql) === TRUE){
+																		
+																	$mysqli->close();
+												    				echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+																				
+															 }else{
+									    
+																echo "Error al editar publicación".$mysqli->error();
+															 }
+														
+														}else{
+															
 														 echo "Algunos de los campos está vacío.";
-																	
+														}			
 													}
 											    
 											     }

@@ -68,8 +68,9 @@
                                 
 			                     <?php  if(isset($_POST['submit'])){
 			                     	
-                                    	if (valida_email ($_POST['email_user'])==FALSE){
-                                				echo "email incorrecto, formato ejemplo@ejemplo.ejemplo";
+                                    	if ((valida_email ($_POST['email_user'])==FALSE) OR (empty($_POST['pass_user']))){
+                                				echo "email incorrecto, formato ejemplo@ejemplo.ejemplo o contraseña vacía";
+											
 										}else{
 											    
 										$sql="SELECT * FROM users WHERE email_user ='".$_POST['email_user']."' AND pass_user = '".sha1($_POST['pass_user'])."'";

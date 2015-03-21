@@ -8,7 +8,7 @@
 		if(isset($config['size'])){
 			
 			if ($_FILES[$config['input_name']]["size"] <= $config['size']) {
-			   
+			   echo 'pasa';
 			   $result = TRUE;
 				
 			}else{
@@ -22,7 +22,7 @@
 			$width = getimagesize($_FILES[$config['input_name']]["tmp_name"]);
 			
 			if ($width[0] <= $config['width']) {
-			   
+			   echo 'pasa';
 			   $result = TRUE;
 				
 			}else{
@@ -36,7 +36,7 @@
 			$height = getimagesize($_FILES[$config['input_name']]["tmp_name"]);
 			
 			if ($height[1] <= $config['height']) {
-			   
+			   echo 'pasa';
 			   $result = TRUE;
 				
 			}else{
@@ -45,10 +45,10 @@
 			}
 		}
 		
-		if($result){
+		/**if($result){
 		
 			if(move_uploaded_file($_FILES[$config['input_name']]['tmp_name'], $target_path)) {
-											
+				echo 'pasa';							
 				$result = TRUE;
 											
 			}else{
@@ -56,7 +56,7 @@
 				$result = FALSE;
 			}
 			
-		}
+		}**/
 		
 		
 		return 	$result;						

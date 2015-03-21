@@ -59,7 +59,7 @@
 		$img_ancho=imagesx($img_fuente); 
 		$img_alto=imagesy($img_fuente); 
 		   
-			 if (($img_ancho <= width) AND ($img_alto <= height)){
+			 if (($img_ancho = width) AND ($img_alto = height)){
 			   	
 			   $result = TRUE;
 				

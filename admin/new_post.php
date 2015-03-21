@@ -149,21 +149,28 @@
 														
 									
 												if(!empty($_POST["id_category"]) AND !empty($_POST["title_post"]) AND !empty($_POST["body_post"]) AND !empty($_POST["tag_post"]) AND !empty($_FILES["image_post"]["name"])){
-														
-														if (cumple_tamano ($target_path)==TRUE){
-												
+															
+														$config = array(
+																   'width'=> '620',
+																   'height' => '295',
+																   'size'=> '300000',
+																   'path'=> "../uploads/",
+																   'input_name'=> "image_post");
+																   
+														if (up_file ($config)==TRUE){
+												echo 'ya estoy en el otro sitio';
 														$sql = "INSERT INTO post (id_category, title_post, body_post, tag_post, image_post)
 									                    VALUES (".$_POST["id_category"].",'".$_POST["title_post"]."','".$_POST["body_post"]."',
 									                    '".$_POST["tag_post"]."','".$_FILES["image_post"]["name"]."')";
 												
 															if ($mysqli -> query($sql) === TRUE){
-																		
+																		echo 'ya estoy dentro';
 																	$mysqli->close();
 													          
 																	if(move_uploaded_file($_FILES["image_post"]["tmp_name"], $target_path)){//tmp_name nombre temporal, ruta y nombre del archivo para que haga la subida del archivo.
 																		
 																			
-																    	    echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
+																    	echo '<meta http-equiv="Refresh" content="0;url='.$base_url.'post.php">';
 																    		
 																	
 																	}else{
@@ -178,7 +185,7 @@
 															
 														}else{
 																		
-																echo "El tamaño de la imagen es mayor a 620x295.";
+																echo "El tamaño de la imagen es mayor que 620x295 o pesa más de 300kb.";
 														}
 															
 													}else{

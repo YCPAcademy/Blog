@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-02-2015 a las 19:14:05
+-- Tiempo de generación: 21-03-2015 a las 20:19:13
 -- Versión del servidor: 5.5.28-log
 -- Versión de PHP: 5.4.9
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `name_category` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `category`
@@ -57,14 +57,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   `image_post` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date_post` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_post`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
 
 --
 -- Volcado de datos para la tabla `post`
 --
 
 INSERT INTO `post` (`id_post`, `id_category`, `title_post`, `body_post`, `tag_post`, `image_post`, `date_post`) VALUES
-(21, 4, 'Programación java', 'Java es un lenguaje de programación de propósito general, concurrente, orientado a objetos que fue diseñado específicamente para tener tan pocas dependencias de implementación como fuera posible. Su intención es permitir que los desarrolladores de aplicaciones escriban el programa una vez y lo ejecuten en cualquier dispositivo (conocido en inglés como WORA, o "write once, run anywhere"), lo que quiere decir que el código que es ejecutado en una plataforma no tiene que ser recompilado para correr en otra. Java es, a partir de 2012, uno de los lenguajes de programación más populares en uso, particularmente para aplicaciones de cliente-servidor de web, con unos 10 millones de usuarios reportados.', 'Programación, java', 'foto1.jpg', '2014-11-02 08:33:54'),
+(21, 4, 'Programación java', 'Java es un lenguaje de programación de propósito general, concurrente, orientado a objetos que fue diseñado específicamente para tener tan pocas dependencias de implementación como fuera posible. Su intención es permitir que los desarrolladores de aplicaciones escriban el programa una vez y lo ejecuten en cualquier dispositivo (conocido en inglés como WORA, o "write once, run anywhere"), lo que quiere decir que el código que es ejecutado en una plataforma no tiene que ser recompilado para correr en otra. Java es, a partir de 2012, uno de los lenguajes de programación más populares en uso, particularmente para aplicaciones de cliente-servidor de web, con unos 10 millones de usuarios reportados.', 'Programación, java', 'foto1.jpg', '2015-03-21 20:02:27'),
 (22, 4, 'Máquina virtual Java.', 'El lenguaje de programación Java fue originalmente desarrollado por James Gosling de Sun Microsystems (la cual fue adquirida por la compañía Oracle) y publicado en 1995 como un componente fundamental de la plataforma Java de Sun Microsystems. Su sintaxis deriva en gran medida de C y C++, pero tiene menos utilidades de bajo nivel que cualquiera de ellos. Las aplicaciones de Java son generalmente compiladas a bytecode (clase Java) que puede ejecutarse en cualquier máquina virtual Java (JVM) sin importar la arquitectura de la computadora subyacente.', 'Programación, Java, máquina virtual java', 'foto2.jpg', '2014-12-08 21:12:36'),
 (23, 6, 'Programación en Html', 'HTML, siglas de HyperText Markup Language («lenguaje de marcas de hipertexto»), hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia para la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como texto, imágenes, entre otros. Es un estándar a cargo de la W3C, organización dedicada a la estandarización de casi todas las tecnologías ligadas a la web, sobre todo en lo referente a su escritura e interpretación.', 'Programación, Html', 'foto3.jpg', '2015-01-05 11:47:34'),
 (24, 7, 'Hojas de estilo', 'Hoja de estilo en cascada o CSS (siglas en inglés de cascading style sheets) es un lenguaje usado para definir la presentación de un documento estructurado escrito en HTML o XML2 (y por extensión en XHTML). El World Wide Web Consortium (W3C) es el encargado de formular la especificación de las hojas de estilo que servirán de estándar para los agentes de usuario o navegadores.', 'Programación, CSS, hojas de estilo', 'foto4.jpg', '2015-01-05 21:14:41'),
